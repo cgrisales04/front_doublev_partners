@@ -1,0 +1,12 @@
+<app-navbar></app-navbar>
+<div class="row ms-3 me-3">
+    <div class="col">
+        <h2 class="text-center mb-3">Ranking de seguidores</h2>
+        <canvas baseChart [datasets]="barChartData" [labels]="barChartLables" [options]="barChartOptions"
+            [legend]="barChartLegend" [chartType]="barChartType">
+        </canvas>
+
+        <button (click)="actualizarUsuarios()" class="btn btn-primary float-end">Atualizar</button>
+    </div>
+
+</div>

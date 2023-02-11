@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<div class="row ms-3 me-3">
+  <h1 class="col-md-8">Lista de usuarios</h1>
+  <div class="col-md-4">
+    <form class="mb-5" (ngSubmit)="buscar()" autocomplete="off" [formGroup]="search_form">
+      <label for="txtUser" class="form-label">Nombre usuario:</label>
+      <div class="d-flex">
+        <input type="text" class="form-control me-2" id="txtUser" placeholder="Buscar..." formControlName="login">
+        <button type="submit" [disabled]="search_form.invalid" class="btn btn-success">Buscar</button>
+      </div>
+      <span class="form-text text-danger m-0 p-0" *ngIf="isValid('login')">
+       {{loginErrorMsg}}
+      </span>
+    </form>
+  </div>
+
+  <div class="row">
+    <div class="d-flex flex-wrap pictures-content" id="pictures-content">
+      <div class="card ms-3 mt-2 me-5 " style="width: 18rem;" *ngFor="let user of users.items">
+        <img [src]="user.avatar_url" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ user.id }} - {{ user.login }}</h5>
+          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima facere iure
+            perspiciatis omnis, incidunt ab. </p>
+          <a routerLink="/users/search-user/{{user.login}}" class="btn btn-success">Ver mas...</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
